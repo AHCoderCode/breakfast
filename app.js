@@ -894,6 +894,9 @@ function init() {
     });
   });
   setupNavigation();
+  if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) {
+    window.addEventListener("load", function () { navigator.serviceWorker.register("./service-worker.js").catch(function (error) { console.info("Offline support is unavailable in this browser.", error); }); }, { once: true });
+  }
   renderCategories();
   renderMenu();
   renderComboCards();
