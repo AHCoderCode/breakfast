@@ -682,7 +682,6 @@ function renderOrders() {
     return;
   }
   root.innerHTML = state.orders.map(function (order) {
-    return '<article class="order-card"><div><strong>' + escapeHTML(order.id) + '</strong><small>' + escapeHTML(prettyDate(order.pickupDate)) + " · " + escapeHTML(prettyTime(order.pickupTime)) + " · " + escapeHTML(order.items.length + (order.items.length === 1 ? " item" : " items")) + '</small><small>' + money(order.total) + " · " + escapeHTML(order.status || "Demo order") + "</small></div>" +
     return `<article class="order-card"><div><strong>${escapeHTML(order.id)}</strong><small>${escapeHTML(prettyDate(order.pickupDate))} · ${escapeHTML(prettyTime(order.pickupTime))} · ${escapeHTML(order.items.length + (order.items.length === 1 ? " item" : " items"))}</small><small>${money(order.total)} · ${escapeHTML(order.status || "Demo order")}</small></div><div class="order-card-actions"><button class="small-outline-button" data-action="view-order" data-id="${escapeHTML(order.id)}">Details</button><button class="small-outline-button" data-action="view-receipt" data-id="${escapeHTML(order.id)}">Receipt</button></div></article>`;
   }).join("");
 }
