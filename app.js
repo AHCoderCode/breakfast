@@ -518,11 +518,11 @@ function checkoutProgress() {
 function checkoutStepMarkup() {
   const data = state.checkoutData;
   if (state.checkoutStep === 0) {
-    return '<h3 class="checkout-step-heading">First, who's picking up?</h3><div class="checkout-form-grid">' +
+    return '<h3 class="checkout-step-heading">First, who is picking up?</h3><div class="checkout-form-grid">' +
       '<div class="form-field full"><label for="checkout-name">Full name *</label><input id="checkout-name" name="name" autocomplete="name" value="' + escapeHTML(data.name) + '" placeholder="Your name" required></div>' +
       '<div class="form-field"><label for="checkout-phone">Phone number *</label><input id="checkout-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" value="' + escapeHTML(data.phone) + '" placeholder="+92 300 0000000" required><small>Used only for this demo receipt; the saved copy masks the number.</small></div>' +
       '<div class="form-field"><label for="checkout-email">Email (optional)</label><input id="checkout-email" name="email" type="email" autocomplete="email" value="' + escapeHTML(data.email) + '" placeholder="you@example.com"></div>' +
-      "</div><p class=\\"checkout-error\\" id=\\"checkout-error\\" aria-live=\\"polite\\"></p>";
+      "</div><p class=\"checkout-error\" id=\"checkout-error\" aria-live=\"polite\"></p>";
   }
   if (state.checkoutStep === 1) {
     const options = Array.from({ length: 7 }, function (_, index) {
@@ -532,18 +532,18 @@ function checkoutStepMarkup() {
     const times = BUSINESS_CONFIG.pickupSlots.map(function (time) {
       return '<option value="' + escapeHTML(time) + '"' + (time === data.pickupTime ? " selected" : "") + ">" + escapeHTML(prettyTime(time)) + "</option>";
     }).join("");
-    return '<h3 class="checkout-step-heading">When should we have it ready?</h3><div class="demo-notice"><span>✳</span><span>' + escapeHTML(BUSINESS_CONFIG.pickupHoursLabel) + ". The slots below are examples and are not connected to live availability.</span></div><div class=\\"checkout-form-grid\\" style=\\"margin-top:13px\\">' +
+    return '<h3 class="checkout-step-heading">When should we have it ready?</h3><div class="demo-notice"><span>✳</span><span>' + escapeHTML(BUSINESS_CONFIG.pickupHoursLabel) + ". The slots below are examples and are not connected to live availability.</span></div><div class=\"checkout-form-grid\" style=\"margin-top:13px\">' +
       '<div class="form-field"><label for="pickup-date">Pickup date *</label><select id="pickup-date">' + options + "</select></div>" +
       '<div class="form-field"><label for="pickup-time">Pickup time *</label><select id="pickup-time">' + times + "</select></div>" +
       '<div class="form-field full"><label for="pickup-instructions">Pickup notes (optional)</label><textarea id="pickup-instructions" maxlength="180" placeholder="Any helpful collection details?">' + escapeHTML(data.pickupInstructions) + "</textarea></div>" +
       '<div class="form-field full"><small>ASAP pickup is disabled until real business hours and order acceptance are configured.</small></div>' +
-      "</div><p class=\\"checkout-error\\" id=\\"checkout-error\\" aria-live=\\"polite\\"></p>";
+      "</div><p class=\"checkout-error\" id=\"checkout-error\" aria-live=\"polite\"></p>";
   }
   if (state.checkoutStep === 2) {
     const totals = currentTotals();
     return '<h3 class="checkout-step-heading">One last look.</h3><div class="checkout-order-summary">' +
       state.cart.map(function (line) {
-        return '<div class="checkout-summary-product"><strong>' + escapeHTML(line.quantity + " × " + line.name) + " <span style=\\"float:right\\">" + money(line.unitPrice * line.quantity) + "</span></strong><small>" + escapeHTML(lineDescription(line)) + "</small></div>";
+        return '<div class="checkout-summary-product"><strong>' + escapeHTML(line.quantity + " × " + line.name) + " <span style=\"float:right\">" + money(line.unitPrice * line.quantity) + "</span></strong><small>" + escapeHTML(lineDescription(line)) + "</small></div>";
       }).join("") +
       '<div class="checkout-summary-line"><span>Subtotal</span><strong>' + money(totals.subtotal) + "</strong></div>" +
       (totals.discount ? '<div class="checkout-summary-line"><span>Discount · ' + escapeHTML(state.coupon) + "</span><strong>− " + money(totals.discount) + "</strong></div>" : "") +
@@ -688,7 +688,7 @@ function renderOrders() {
 }
 function openHistory() {
   $("#history-dialog-list").innerHTML = state.orders.length ? state.orders.map(function (order) {
-    return '<article class="history-order"><div class="history-order-top"><strong>' + escapeHTML(order.id) + '</strong><span>LOCAL DEMO</span></div><p>' + escapeHTML(prettyDate(order.pickupDate)) + " · " + escapeHTML(prettyTime(order.pickupTime)) + " · " + money(order.total) + "</p><div class=\\"history-order-actions\\"><button class=\\"small-outline-button\\" data-action=\\"view-order\\" data-id=\\"" + escapeHTML(order.id) + "\\">View details</button><button class=\\"small-outline-button\\" data-action=\\"view-receipt\\" data-id=\\"" + escapeHTML(order.id) + "\\">Open receipt</button></div></article>";
+    return '<article class="history-order"><div class="history-order-top"><strong>' + escapeHTML(order.id) + '</strong><span>LOCAL DEMO</span></div><p>' + escapeHTML(prettyDate(order.pickupDate)) + " · " + escapeHTML(prettyTime(order.pickupTime)) + " · " + money(order.total) + "</p><div class=\"history-order-actions\"><button class=\"small-outline-button\" data-action=\"view-order\" data-id=\"" + escapeHTML(order.id) + "\">View details</button><button class=\"small-outline-button\" data-action=\"view-receipt\" data-id=\"" + escapeHTML(order.id) + "\">Open receipt</button></div></article>";
   }).join("") : '<div class="history-empty">No saved orders yet. Your demo receipts will appear here after checkout.</div>';
   $("#history-dialog").showModal();
 }
