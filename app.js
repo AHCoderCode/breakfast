@@ -532,7 +532,7 @@ function checkoutStepMarkup() {
     const times = BUSINESS_CONFIG.pickupSlots.map(function (time) {
       return '<option value="' + escapeHTML(time) + '"' + (time === data.pickupTime ? " selected" : "") + ">" + escapeHTML(prettyTime(time)) + "</option>";
     }).join("");
-    return '<h3 class="checkout-step-heading">When should we have it ready?</h3><div class="demo-notice"><span>✳</span><span>' + escapeHTML(BUSINESS_CONFIG.pickupHoursLabel) + ". The slots below are examples and are not connected to live availability.</span></div><div class=\"checkout-form-grid\" style=\"margin-top:13px\">' +
+    return '<h3 class="checkout-step-heading">When should we have it ready?</h3><div class="demo-notice"><span>✳</span><span>' + escapeHTML(BUSINESS_CONFIG.pickupHoursLabel) + '. The slots below are examples and are not connected to live availability.</span></div><div class="checkout-form-grid" style="margin-top:13px">' +
       '<div class="form-field"><label for="pickup-date">Pickup date *</label><select id="pickup-date">' + options + "</select></div>" +
       '<div class="form-field"><label for="pickup-time">Pickup time *</label><select id="pickup-time">' + times + "</select></div>" +
       '<div class="form-field full"><label for="pickup-instructions">Pickup notes (optional)</label><textarea id="pickup-instructions" maxlength="180" placeholder="Any helpful collection details?">' + escapeHTML(data.pickupInstructions) + "</textarea></div>" +
