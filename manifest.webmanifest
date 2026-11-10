@@ -1,0 +1,21 @@
+{
+  "id": "./",
+  "name": "Morning House — Breakfast & Takeaway",
+  "short_name": "Morning House",
+  "description": "Discover breakfast favourites, customise your order and prepare a takeaway receipt.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f8f5ee",
+  "theme_color": "#30271f",
+  "categories": ["food", "shopping"],
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
