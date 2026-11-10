@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Premium responsive breakfast takeaway ordering experience",
   "scripts": {
-    "build": "node --check app.js && node --check catalog.js && node --check core.js && npm test",
+    "build": "node --check app.js && node --check catalog.js && node --check core.js && node --check service-worker.js && npm test",
     "typecheck": "npm run build",
     "test": "node --test"
   }
