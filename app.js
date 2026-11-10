@@ -140,7 +140,7 @@ function productCard(product) {
       '<button class="favorite-button ' + (favorite ? "is-favorite" : "") + '" data-action="favorite" data-id="' + escapeHTML(product.id) + '" aria-label="' + (favorite ? "Remove " : "Add ") + escapeHTML(product.name) + ' ' + (favorite ? "from" : "to") + ' favourites" aria-pressed="' + favorite + '">' + (favorite ? "♥" : "♡") + "</button>" +
     "</div>" +
     '<div class="product-content">' +
-      '<div class="product-meta"><span>' + escapeHTML(category ? category.label : "Breakfast") + '</span><span class="product-rating">★ ' + escapeHTML(product.rating.toFixed(1)) + " <span style=\\"color:#a59b8e;font-weight:500\\">(" + escapeHTML(product.reviews) + ")</span></span></div>" +
+      '<div class="product-meta"><span>' + escapeHTML(category ? category.label : "Breakfast") + '</span><span class="product-rating">★ ' + escapeHTML(product.rating.toFixed(1)) + ' <span style="color:#a59b8e;font-weight:500">(' + escapeHTML(product.reviews) + ')</span></span></div>' +
       "<h3>" + escapeHTML(product.name) + "</h3>" +
       "<p>" + escapeHTML(product.description) + "</p>" +
       '<div class="product-bottom"><strong class="product-price">' + money(product.price) + "</strong>" +
