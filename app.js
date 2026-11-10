@@ -739,6 +739,14 @@ function scrollToMenu() {
   $("#menu").scrollIntoView({ behavior: "smooth", block: "start" });
 }
 function handleClick(event) {
+  const filterButton = event.target.closest("#bestseller-filter, #vegetarian-filter, #favorites-filter");
+  if (filterButton) {
+    if (filterButton.id === "bestseller-filter") state.bestsellersOnly = !state.bestsellersOnly;
+    if (filterButton.id === "vegetarian-filter") state.vegetarianOnly = !state.vegetarianOnly;
+    if (filterButton.id === "favorites-filter") state.favoritesOnly = !state.favoritesOnly;
+    renderMenu();
+    return;
+  }
   const button = event.target.closest("[data-action]");
   if (!button) return;
   const action = button.dataset.action;
